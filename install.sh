@@ -31,3 +31,7 @@ cd ~/reconv4
 wget https://wordlists-cdn.assetnote.io/data/manual/best-dns-wordlist.txt
 wget https://raw.githubusercontent.com/BonJarber/fresh-resolvers/main/resolvers.txt
 wget https://raw.githubusercontent.com/K4r1it0/installer/main/perm.txt
+go get -u https://github.com/hakluke/hakcron
+hakcron -f "every 3h" -c "dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 50 -o /tmp/resolvers.txt&& cat /tmp/resolvers.txt | sort -u > ~/resolvers.txt&&rm /tmp/resolvers.txt"
+
+
